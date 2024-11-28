@@ -275,7 +275,7 @@ wheels = [
 
 [[package]]
 name = "cyclopts"
-version = "3.1.1"
+version = "3.1.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "attrs" },
@@ -283,14 +283,14 @@ dependencies = [
     { name = "rich" },
     { name = "rich-rst" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/64/e9/18f89572ffbac57c1ec9ea54bab239342e07ebcba8f1f379ac0420e48716/cyclopts-3.1.1.tar.gz", hash = "sha256:52e527496641bd4d9786a8d12ac053b4d72354b2b684fe59953707cc8f3e5364", size = 60565 }
+sdist = { url = "https://files.pythonhosted.org/packages/76/bb/0b2260ade4d38dd8865b7201890f7e61c3a729ea3b271a677423fbb045bf/cyclopts-3.1.2.tar.gz", hash = "sha256:b3bd3ae44a8251b1b7979b619196b10c219522023911c18c823ceedc3d372130", size = 60585 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8e/20/45d79696a64c697863d0eabe492b5033ae627a4cc5b86a103858abcdd45d/cyclopts-3.1.1-py3-none-any.whl", hash = "sha256:911c85044b81e46f4c27e2c7eb6074ba31ff67e7596792c57faab42041e741f3", size = 68570 },
+    { url = "https://files.pythonhosted.org/packages/14/cc/dcad0a10c2d61f0fb41d80210f47f28475edcd7795d9efb47f0745f6ca1b/cyclopts-3.1.2-py3-none-any.whl", hash = "sha256:35bcb3265a0410d431684cfae116992999f15cd48acc1e72d3895f5041808f55", size = 68566 },
 ]
 
 [[package]]
 name = "deckz"
-version = "20.3.1"
+version = "21.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "appdirs" },
@@ -327,7 +327,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "appdirs", specifier = ">=1,<2" },
-    { name = "cyclopts", specifier = ">=3.1.1,<4" },
+    { name = "cyclopts", specifier = ">=3.1.2,<4" },
     { name = "email-validator", specifier = ">=2,<3" },
     { name = "google-api-python-client", specifier = ">=2,<3" },
     { name = "google-auth-oauthlib", specifier = ">=1,<2" },
