@@ -7,17 +7,11 @@ both of which are `Node`s and have a `process` method to allow visitors to be de
 from abc import ABC, abstractmethod
 from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import TypeVar
-
-from typing_extensions import ParamSpec
 
 from ..processing import NodeVisitor
 from .scalars import FlavorName, PartName, ResolvedPath, UnresolvedPath
 
 __all__ = ["Deck", "File", "Node", "Part", "Section"]
-
-_P = ParamSpec("_P")
-_T = TypeVar("_T", covariant=True)
 
 
 @dataclass
@@ -31,17 +25,17 @@ class Node(ABC):
     parsing_error: str | None
 
     @abstractmethod
-    def accept(
-        self, visitor: NodeVisitor[_P, _T], *args: _P.args, **kwargs: _P.kwargs
-    ) -> _T:
+    def accept[**P, T](
+        self, visitor: NodeVisitor[P, T], *args: P.args, **kwargs: P.kwargs
+    ) -> T:
         raise NotImplementedError
 
 
 @dataclass
 class File(Node):
-    def accept(
-        self, visitor: NodeVisitor[_P, _T], *args: _P.args, **kwargs: _P.kwargs
-    ) -> _T:
+    def accept[**P, T](
+        self, visitor: NodeVisitor[P, T], *args: P.args, **kwargs: P.kwargs
+    ) -> T:
         return visitor.visit_file(self, *args, **kwargs)
 
 
@@ -50,9 +44,9 @@ class Section(Node):
     flavor: FlavorName
     children: list[Node]
 
-    def accept(
-        self, visitor: NodeVisitor[_P, _T], *args: _P.args, **kwargs: _P.kwargs
-    ) -> _T:
+    def accept[**P, T](
+        self, visitor: NodeVisitor[P, T], *args: P.args, **kwargs: P.kwargs
+    ) -> T:
         return visitor.visit_section(self, *args, **kwargs)
 
 

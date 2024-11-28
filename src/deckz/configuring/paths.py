@@ -3,7 +3,6 @@ from dataclasses import dataclass
 from itertools import chain
 from logging import getLogger
 from pathlib import Path
-from typing import TypeVar
 
 from appdirs import user_config_dir as appdirs_user_config_dir
 
@@ -12,9 +11,6 @@ from ..exceptions import DeckzError
 from ..utils import get_git_dir
 
 _logger = getLogger(__name__)
-
-
-_GlobalPathsType = TypeVar("_GlobalPathsType", bound="GlobalPaths")
 
 
 @dataclass
@@ -95,12 +91,12 @@ class GlobalPaths:
         }
 
     @classmethod
-    def from_defaults(
-        cls: type[_GlobalPathsType],
+    def from_defaults[T: GlobalPaths](
+        cls: type[T],
         current_dir: Path,
         check_depth: bool = True,
         **kwargs: Path,
-    ) -> _GlobalPathsType:
+    ) -> T:
         return cls(**{**cls._defaults_global_paths(current_dir), **kwargs})
 
     def decks_paths(self) -> Iterator["Paths"]:
@@ -116,9 +112,6 @@ class GlobalPaths:
     def section_files(self) -> Iterator[Path]:
         for latex_dir in self.latex_dirs():
             yield from latex_dir.rglob("*.yml")
-
-
-_PathsType = TypeVar("_PathsType", bound="Paths")
 
 
 @dataclass
@@ -166,12 +159,12 @@ class Paths(GlobalPaths):
         return {**defaults, **additional_defaults}
 
     @classmethod
-    def from_defaults(
-        cls: type[_PathsType],
+    def from_defaults[T: Paths](
+        cls: type[T],
         current_dir: Path,
         check_depth: bool = True,
         **kwargs: Path,
-    ) -> _PathsType:
+    ) -> T:
         return cls(
             **{
                 **cls._defaults_paths(
